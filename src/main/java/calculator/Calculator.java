@@ -41,8 +41,12 @@ public class Calculator {
 
     private int sumNumbers(String[] numbers) {
         int sum = 0;
-        for (String num : numbers) {
-            sum += Integer.parseInt(num);
+        for (String number : numbers) {
+            int num = Integer.parseInt(number);
+            if (num < 0) {
+                throw new IllegalArgumentException();
+            }
+            sum += num;
         }
         return sum;
     }

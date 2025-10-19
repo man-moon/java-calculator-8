@@ -1,6 +1,7 @@
 package calculator;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 
@@ -63,5 +64,15 @@ public class CalculatorTest {
         int result = calculator.add(input);
 
         assertThat(result).isEqualTo(10);
+    }
+
+    @Test
+    void 음수가_포함된_경우_예외_발생() {
+        String input = "1,2,-3,4";
+
+        Calculator calculator = new Calculator();
+
+        assertThatThrownBy(() -> calculator.add(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

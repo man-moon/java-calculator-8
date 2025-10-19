@@ -75,4 +75,15 @@ public class CalculatorTest {
         assertThatThrownBy(() -> calculator.add(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 숫자가_아닌_값이_포함된_경우_예외_발생() {
+        String input = "1,2,C,4";
+
+        Calculator calculator = new Calculator();
+
+        assertThatThrownBy(() -> calculator.add(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }

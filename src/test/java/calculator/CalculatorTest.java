@@ -53,7 +53,15 @@ public class CalculatorTest {
         int result = calculator.add(input);
 
         assertThat(result).isEqualTo(10);
-
     }
 
+    @Test
+    void 커스텀_구분자_숫자_합_반환() {
+        String input = "//@\\n1@2@3@4";
+
+        Calculator calculator = new Calculator();
+        int result = calculator.add(input);
+
+        assertThat(result).isEqualTo(10);
+    }
 }

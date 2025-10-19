@@ -44,4 +44,16 @@ public class CalculatorTest {
 
         assertThat(result).isEqualTo(10);
     }
+
+    @Test
+    void 기본_구분자_숫자_합_반환() {
+        String input = "1:2,3:4";
+
+        Calculator calculator = new Calculator();
+        int result = calculator.add(input);
+
+        assertThat(result).isEqualTo(10);
+
+    }
+
 }

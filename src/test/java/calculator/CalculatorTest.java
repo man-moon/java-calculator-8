@@ -14,4 +14,14 @@ public class CalculatorTest {
 
         assertThat(result).isEqualTo(0);
     }
+
+    @Test
+    void 단일_숫자_입력시_해당_숫자_반환() {
+        String input = "5";
+
+        Calculator calculator = new Calculator();
+        int result = calculator.add(input);
+
+        assertThat(result).isEqualTo(5);
+    }
 }

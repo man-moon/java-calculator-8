@@ -6,6 +6,6 @@ public class Calculator {
         if(input.isEmpty()) {
             return 0;
         }
-        return 0;
+        return Integer.parseInt(input);
     }
 }

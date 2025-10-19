@@ -1,16 +1,23 @@
-package calculator;
+package calculator.core;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
+    private Calculator calculator;
+
+    @BeforeEach
+    void setUp() {
+        calculator = new Calculator();
+    }
+
     @Test
     void 빈_문자열_입력시_0_반환() {
         String input = "";
 
-        Calculator calculator = new Calculator();
         int result = calculator.add(input);
 
         assertThat(result).isEqualTo(0);
@@ -20,7 +27,6 @@ public class CalculatorTest {
     void 단일_숫자_입력시_해당_숫자_반환() {
         String input = "5";
 
-        Calculator calculator = new Calculator();
         int result = calculator.add(input);
 
         assertThat(result).isEqualTo(5);
@@ -30,7 +36,6 @@ public class CalculatorTest {
     void 쉼표_구분자_숫자_합_반환() {
         String input = "1,2,3,4";
 
-        Calculator calculator = new Calculator();
         int result = calculator.add(input);
 
         assertThat(result).isEqualTo(10);
@@ -40,7 +45,6 @@ public class CalculatorTest {
     void 콜론_구분자_숫자_합_반환() {
         String input = "1:2:3:4";
 
-        Calculator calculator = new Calculator();
         int result = calculator.add(input);
 
         assertThat(result).isEqualTo(10);
@@ -50,7 +54,6 @@ public class CalculatorTest {
     void 기본_구분자_숫자_합_반환() {
         String input = "1:2,3:4";
 
-        Calculator calculator = new Calculator();
         int result = calculator.add(input);
 
         assertThat(result).isEqualTo(10);
@@ -60,7 +63,6 @@ public class CalculatorTest {
     void 커스텀_구분자_숫자_합_반환() {
         String input = "//@\\n1@2@3@4";
 
-        Calculator calculator = new Calculator();
         int result = calculator.add(input);
 
         assertThat(result).isEqualTo(10);
@@ -70,8 +72,6 @@ public class CalculatorTest {
     void 음수가_포함된_경우_예외_발생() {
         String input = "1,2,-3,4";
 
-        Calculator calculator = new Calculator();
-
         assertThatThrownBy(() -> calculator.add(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -79,8 +79,6 @@ public class CalculatorTest {
     @Test
     void 숫자가_아닌_값이_포함된_경우_예외_발생() {
         String input = "1,2,C,4";
-
-        Calculator calculator = new Calculator();
 
         assertThatThrownBy(() -> calculator.add(input))
                 .isInstanceOf(IllegalArgumentException.class);

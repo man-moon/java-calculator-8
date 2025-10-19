@@ -6,8 +6,11 @@ import calculator.core.Calculator;
 public class Application {
     public static void main(String[] args) {
         String input = Console.readLine();
+        input = input.trim();
+
         Calculator calculator = new Calculator();
         int result = calculator.add(input);
+
         System.out.println("결과 : " + result);
     }
 }

@@ -14,9 +14,16 @@ class DefaultDelimiterStrategyTest {
     }
 
     @Test
+    void 빈_문자열_처리_가능_확인() {
+        assertThat(strategy.canHandle("")).isTrue();
+    }
+
+    @Test
     void 기본_구분자_처리_가능_확인() {
-        assertThat(strategy.canHandle("1,2:3")).isTrue();
+        assertThat(strategy.canHandle("100,20:3")).isTrue();
         assertThat(strategy.canHandle("//;\\n1;2")).isFalse();
+        assertThat(strategy.canHandle("1,2,")).isFalse();
+        assertThat(strategy.canHandle("1,2,:")).isFalse();
     }
 
     @Test

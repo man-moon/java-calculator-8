@@ -25,12 +25,11 @@ public class Calculator {
     }
 
     public int add(String input) {
-        if (input.isEmpty()) {
-            return 0;
-        }
-
         DelimiterStrategy strategy = findStrategy(input);
         String[] numbers = strategy.splitNumbers(input);
+        if(numbers.length == 0) {
+            return 0;
+        }
         return sumNumbers(numbers);
     }
 

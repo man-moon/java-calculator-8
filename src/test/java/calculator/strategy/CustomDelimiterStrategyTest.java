@@ -18,8 +18,15 @@ class CustomDelimiterStrategyTest {
 
     @Test
     void 커스텀_구분자_처리_가능_확인() {
-        assertThat(strategy.canHandle("//;\\n1;2")).isTrue();
+        assertThat(strategy.canHandle("//;\\n1000;2;3;4")).isTrue();
+        assertThat(strategy.canHandle("//;\\n")).isTrue();
+        assertThat(strategy.canHandle("//;1;2;3")).isFalse();
         assertThat(strategy.canHandle("1,2:3")).isFalse();
+    }
+
+    @Test
+    void 커스텀_기본_구분자_혼합_처리_가능_확인() {
+        assertThat(strategy.canHandle("//@\\n1@2,3:4")).isTrue();
     }
 
     @Test

@@ -69,6 +69,15 @@ public class CalculatorTest {
     }
 
     @Test
+    void 기본_커스텀_구분자_혼합_합_반환() {
+        String input = "//#\\n10#20,30:40";
+
+        int result = calculator.add(input);
+
+        assertThat(result).isEqualTo(100);
+    }
+
+    @Test
     void 음수가_포함된_경우_예외_발생() {
         String input = "1,2,-3,4";
 
@@ -83,5 +92,4 @@ public class CalculatorTest {
         assertThatThrownBy(() -> calculator.add(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
 }

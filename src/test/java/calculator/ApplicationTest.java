@@ -24,6 +24,22 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 기본_구분자_통합_테스트() {
+        assertSimpleTest(() -> {
+            run("1,2:3,4");
+            assertThat(output()).contains("결과 : 10");
+        });
+    }
+
+    @Test
+    void 커스텀_구분자_통합_테스트() {
+        assertSimpleTest(() -> {
+            run("//#\\n1#2#4");
+            assertThat(output().contains("결과 : 7"));
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
